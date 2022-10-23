@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 
 // importing components
 import ColorBlock from './ColorBlock';
+import ColorForm from './ColorForm';
 
 function App() {
   let [colors, setColors] = useState ([
@@ -17,11 +18,17 @@ function App() {
     <ColorBlock key= {i} color={color}/>
     )
   })
+
+  // using the spread operator (...) to make a new color array with the new color plus the old colors
+  const addColor = (newColor) => {
+    setColors([...colors, newColor])
+  }
   return (
     <div className="App">
       {colorMap}
+      <ColorForm addColor={addColor}/>
     </div>
-  );
+  )
 }
 
 export default App;
